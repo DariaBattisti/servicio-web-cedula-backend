@@ -1,0 +1,13 @@
+{
+  "name": "servicio-web-cedula",
+  "version": "1.0.0",
+  "description": "Servicio Web para validar cedula usando modulo 10",
+  "main": "servidor.js",
+  "scripts": {
+    "start": "node servidor.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
