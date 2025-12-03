@@ -1,10 +1,8 @@
-// Servicio Web para validar cedula usando modulo 10 
-
 const express = require("express");
 const cors = require("cors");
 
 const app = express();
-const PORT = process.env.PORT || 3000; // IMPORTANTE para Render
+const PORT = process.env.PORT || 3000; 
 
 app.use(express.json());
 app.use(cors());
@@ -12,7 +10,6 @@ app.use(cors());
 function validarCedulaModulo10(cedula) {
   const soloDigitos = String(cedula).replace(/\D/g, '');
 
-  // Opcional: exigir 11 digitos
   if (soloDigitos.length !== 11) {
     return { valida: false, cedula: soloDigitos };
   }
@@ -52,22 +49,23 @@ app.post("/validarCedula", (req, res) => {
     res.json({
       cedula: resultado.cedula,
       valida: true,
-      mensaje: "Cedula valida (Modulo 10)."
+      mensaje: "Cedula valida."
     });
   } else {
     res.json({
       cedula: resultado.cedula,
       valida: false,
-      mensaje: "Cedula invalida (no cumple Modulo 10)."
+      mensaje: "Cedula invalida."
     });
   }
 });
 
-// Ruta simple para probar que el servicio vive
+// para probar que el servicio vive
 app.get("/", (req, res) => {
-  res.send("Servicio Web de validacion de cedula (Modulo 10) esta funcionando.");
+  res.send("Servicio Web de validacion de cedula esta funcionando.");
 });
 
 app.listen(PORT, () => {
   console.log(`Servicio Web escuchando en http://localhost:${PORT}/`);
 });
+
